@@ -1,5 +1,5 @@
 #include "../include/event.h"
-#include "../include/init.h"
+#include "../include/data_types.h"
 
 SDL_AppResult event_handle(void* appstate, SDL_Event* event)
 {
