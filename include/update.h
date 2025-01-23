@@ -1,6 +1,7 @@
 #ifndef UPDATE_H
 #define UPDATE_H
+#include <SDL3/SDL.h>
 
-void update(void* appstate);
+SDL_AppResult update(void* appstate);
 
 #endif

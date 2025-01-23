@@ -7,6 +7,7 @@
 #include "../include/init.h"
 #include "../include/quit.h"
 #include "../include/render.h"
+#include "../include/update.h"
 
 SDL_AppResult SDL_AppInit(void** appstate, int argc, char* argv[])
 {
@@ -18,7 +19,17 @@ SDL_AppResult SDL_AppEvent(void* appstate, SDL_Event* event)
     return event_handle(appstate, event);
 }
 
-SDL_AppResult SDL_AppIterate(void* appstate) { return render(appstate); }
+SDL_AppResult SDL_AppIterate(void* appstate)
+{
+    // Update()
+    SDL_AppResult update_result = update(appstate);
+
+    if (update_result != SDL_APP_CONTINUE) {
+        return update_result;
+    }
+    // Render()
+    return render(appstate);
+}
 
 void SDL_AppQuit(void* appstate, SDL_AppResult result)
 {
